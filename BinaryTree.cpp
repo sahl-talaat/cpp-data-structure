@@ -1,45 +1,30 @@
-#include <bits/stdc++.h>  //include all libraries
-#include "Node.cpp"
-using namespace N;
+#include <iostream>
+
+using namespace std;
 
 
-
+class Node_B // struct
+{
+public:
+    int data;
+    Node_B* left;
+    Node_B* right;
+    Node_B(int value)
+    {
+        data = value;
+        left=right=NULL;
+    }
+};
 
 
 class BinaryTree
 {
-private:
-    NodeBST* root;
-    NodeBST* Insert(NodeBST* r,int item)
-    {
-        if(r == NULL)
-        {
-            NodeBST* new_node = new NodeBST(item);
-            r = new_node;
-        }
-        else if(item < r->data)
-        {
-            r->left = Insert(r->left,item);
-        }
-        else
-        {
-            r->right = Insert(r->right,item);
-        }
-        return r;
-    }
-    NodeBST* Search(NodeBST* r,int key)
-    {
-        if(r == NULL)
-            return NULL;
-        else if(r->data == key)
-            return r;
-        else if(key < r->data)
-            return  Search(r->left , key);
-        else
-            return Search(r->right , key);
-    }
-
 public:
+    Node_B* root; // pivate
+
+
+
+
 
 BinaryTree()
 {
@@ -59,12 +44,33 @@ bool IsEmpty()
 }
 
 
+Node_B* Insert(Node_B* r,int item)
+{
+    //new_node->data=value;
+    if(r == NULL)
+    {
+        Node_B* new_node = new Node_B(item);
+        r = new_node;
+    }
+    else if(item < r->data)
+    {
+        r->left = Insert(r->left,item);
+    }
+    else
+    {
+        r->right = Insert(r->right,item);
+    }
+    return r;
+}
+
+
 void Insert(int item)
 {
     root = Insert(root,item);
 }
 
-void PreOrder(NodeBST* r)//root-left-right
+
+void PreOrder(Node_B* r)//root-left-right
 {
     if(r==NULL)
         return;
@@ -73,7 +79,8 @@ void PreOrder(NodeBST* r)//root-left-right
     PreOrder(r->right);
 }
 
-void InOrder(NodeBST* r)//left-root-right
+
+void InOrder(Node_B* r)//left-root-right
 {
     if(r==NULL)
         return;
@@ -82,7 +89,8 @@ void InOrder(NodeBST* r)//left-root-right
     InOrder(r->right);
 }
 
-void PostOrder(NodeBST* r)//left-right-root
+
+void PostOrder(Node_B* r)//left-right-root
 {
     if(r==NULL)
         return;
@@ -91,36 +99,53 @@ void PostOrder(NodeBST* r)//left-right-root
     cout<<r->data<<"\t";
 }
 
+
+Node_B* Search(Node_B* r,int key)
+{
+    if(r == NULL)
+        return NULL;
+    else if(r->data == key)
+        return r;
+    else if(key < r->data)
+        return  Search(r->left , key);
+    else
+        return Search(r->right , key);
+}
+
+
 bool Search(int key)
 {
-    NodeBST* result = Search(root , key);
+    Node_B* result = Search(root , key);
     if(result == NULL)
         return false;
     else
         return true;
 }
 
-NodeBST* FindMin(NodeBST* r)
+
+Node_B* FindMin(Node_B* r)
 {
     if(r == NULL)
         return NULL;
     else if (r->left == NULL)
         return r;
     else
-        return FindMin(r->left);
+        FindMin(r->left);
 }
 
-NodeBST* FindMax(NodeBST* r)
+
+Node_B* FindMax(Node_B* r)
 {
     if(r == NULL)
         return NULL;
     else if (r->right == NULL)
         return r;
     else
-        return FindMax(r->right);
+        FindMax(r->right);
 }
 
-NodeBST* Delete(NodeBST* r, int key)
+
+Node_B* Delete(Node_B* r, int key)
 {
     if(r == NULL) // empty tree
         return NULL;
@@ -146,7 +171,7 @@ NodeBST* Delete(NodeBST* r, int key)
         }
         else // have two child " replace it with max left
         {
-            NodeBST* _max = FindMax(r->left);
+            Node_B* _max = FindMax(r->left);
             r->data = _max->data;
             r->left = Delete(r->left,_max->data);
         }

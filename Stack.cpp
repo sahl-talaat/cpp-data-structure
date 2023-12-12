@@ -1,14 +1,19 @@
 #include <bits/stdc++.h>  //include all libraries
-#include "Node.cpp"
-using namespace N;
+//#include "NodeS.cpp"
 
+class NodeS
+{
+    public:
+    int data;
+    NodeS* next;
+};
 
 
 
 class Stack
 {
 private:
-    N::Node* top;
+    NodeS* top;
 public:
 
 Stack()
@@ -28,7 +33,7 @@ bool IsEmpty()
 bool IsFull()
 {
     bool full = false;
-    N::Node* ptr = new N::Node();
+    NodeS* ptr = new NodeS();
     if(ptr == NULL)
         full = true;
     return full;
@@ -38,7 +43,7 @@ bool IsFull()
 void Push(int item)
 {
 
-    N::Node* newNode = new N::Node();
+    NodeS* newNode = new NodeS();
     newNode->data = item;
     if(IsEmpty())
     {
@@ -54,7 +59,7 @@ void Push(int item)
 int Pop()
 {
     int value_deleted = 0;
-    N::Node* del_ptr = top;
+    NodeS* del_ptr = top;
     value_deleted = top->data;
     top = top->next;
     delete del_ptr;
@@ -64,7 +69,7 @@ int Pop()
 
 void Display()
 {
-    N::Node* temp = top;
+    NodeS* temp = top;
     while(temp!=NULL)
     {
         std::cout<<temp->data<<"\t";
@@ -78,7 +83,7 @@ void Display()
 int StackCount()
 {
     int counter = 0;
-    N::Node* temp = top;
+    NodeS* temp = top;
     while(temp != NULL)
     {
         counter++;
@@ -91,7 +96,7 @@ int StackCount()
 bool IsFound(int key)
 {
     bool found = false;
-    N::Node* temp = top;
+    NodeS* temp = top;
     while(temp != NULL)
     {
         if(temp->data==key)

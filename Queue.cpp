@@ -1,15 +1,18 @@
 #include <bits/stdc++.h>  //include all libraries
-#include "Node.cpp"
-using namespace N;
+//#include "NodeQ.cpp"
 
-
+struct NodeQ
+{
+    int data;
+    NodeQ* next;
+};
 
 
 class Queue
 {
 private:
-    N::Node* front;
-    N::Node* rear;
+    NodeQ* front;
+    NodeQ* rear;
 public:
     
 Queue()
@@ -44,7 +47,7 @@ int GetRear()
 int Count()
 {
     int counter = 0;
-    N::Node* temp = front;
+    NodeQ* temp = front;
     while(temp!=NULL)
     {
         counter++;
@@ -56,7 +59,7 @@ int Count()
 
 void EnQueue(int item)
 {
-    N::Node* newNode = new N::Node;
+    NodeQ* newNode = new NodeQ;
     newNode->data= item;
     if(IsEmpty())
     {
@@ -77,7 +80,7 @@ int DeQueue()
         front=rear=NULL;
         return front->data;
     }
-    N::Node* del_ptr = front;
+    NodeQ* del_ptr = front;
     front = front->next;
     value_deleted = del_ptr->data;
     delete del_ptr;
@@ -87,7 +90,7 @@ int DeQueue()
 
 void Display()
 {
-    N::Node* temp = front;
+    NodeQ* temp = front;
     while(temp!=NULL)
     {
         std::cout<<temp->data<<"\t";
@@ -99,7 +102,7 @@ void Display()
 bool IsFound(int key)
 {
     bool found = false;
-    N::Node* temp = front;
+    NodeQ* temp = front;
     while(temp!=NULL)
     {
         if(temp->data==key)

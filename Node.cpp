@@ -1,22 +1,10 @@
 #include <bits/stdc++.h>  //include all libraries
+#include <iostream>
+using namespace std;
 // LinkedList & Queue & Stack
-namespace N
+class Node
 {
-struct Node
-{
+    public:
     int data;
     Node* next;
 };
-
-struct NodeBST
-{
-    int data;
-    NodeBST* left;
-    NodeBST* right;
-    NodeBST(int value)
-    {
-        data = value;
-        left=right=std::NULL;
-    }
-};
-}

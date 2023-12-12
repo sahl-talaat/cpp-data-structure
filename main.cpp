@@ -1,13 +1,12 @@
 
 #include <iostream>
 using namespace std;
-
+//#include "Node.cpp"
 #include "Vector.cpp"
 #include "LinkedList.cpp"
 #include "Stack.cpp"
 #include "Queue.cpp"
 #include "BinaryTree.cpp"
-
 
 
 
@@ -488,7 +487,7 @@ int main()
                     int new_value;
                     std::cout<<"enter item number "<<i+1<<" to insert \n";
                     std::cin>>new_value;
-                    BST.Insert(new_value);
+                    BST.Insert(BST.root,new_value);
                 }
                 
                 while (BSTalive)
@@ -580,7 +579,7 @@ int main()
                         int new_value;
                         std::cout<<"  enter new value to insert\n";
                         std::cin>>new_value;
-                        BST.Insert(new_value);
+                        BST.Insert(BST.root,new_value);
                         std::cout<<"  value inserted successfully\n";
                         break;
                     }
@@ -589,7 +588,7 @@ int main()
                         int key;
                         std::cout<<"  enter value to search for\n";
                         std::cin>>key;
-                        if(BST.Search(key))
+                        if(BST.Search(BST.root,key))
                             std::cout<<"  value is founded inside tree\n";
                         else
                             std::cout<<"  value not found....\n";

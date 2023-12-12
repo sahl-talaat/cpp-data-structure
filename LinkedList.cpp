@@ -1,11 +1,10 @@
 #include <bits/stdc++.h>  //include all libraries
 #include "Node.cpp"
-using namespace N;
 
 class LinkedList
 {
 private:
-    N::Node* head;
+    Node* head;
 public:
 
     LinkedList():head(NULL)
@@ -25,7 +24,7 @@ public:
 
     void InsertFirst(int new_value)
         {
-            N::Node* newNode = new N::Node();
+            Node* newNode = new Node();
             newNode->data = new_value;
             if(IsEmpty())
             {
@@ -39,7 +38,7 @@ public:
 
     void Display()
         {
-            N::Node* temp = head;
+            Node* temp = head;
             while(temp!=NULL)
             {
                 std::cout<<temp->data<<"\t";
@@ -51,7 +50,7 @@ public:
     int Count()
         {
             int counter = 0;
-            N::Node* temp = head;
+            Node* temp = head;
             while(temp!=NULL)
             {
                 counter ++;
@@ -63,7 +62,7 @@ public:
     bool IsFound(int key)
         {
             bool found = false;
-            N::Node* temp = head;
+            Node* temp = head;
             while(temp != NULL)
             {
                 if(temp->data == key)
@@ -79,9 +78,9 @@ public:
                 InsertFirst(new_value);
             else if(!IsFound(item))
                 return;
-            N::Node* newNode = new N::Node();
+            Node* newNode = new Node();
             newNode->data=new_value;
-            N::Node* temp = head;
+            Node* temp = head;
             while(temp!=NULL && temp->next->data!=item)
             {
                 temp = temp->next;
@@ -97,12 +96,12 @@ public:
                 InsertFirst(new_value);
                 return;
             }
-            N::Node* temp = head;
+            Node* temp = head;
             while(temp->next != NULL)
             {
                     temp = temp->next;
             }
-            N::Node* newNode = new N::Node();
+            Node* newNode = new Node();
             newNode->data = new_value;
             temp->next=newNode;
             newNode->next=NULL;
@@ -114,7 +113,7 @@ public:
             return;
         else if(!IsFound(key))
             return;
-        N::Node* del_ptr = head;
+        Node* del_ptr = head;
         if(head->data == key)
         {
             head = head->next;
@@ -122,7 +121,7 @@ public:
         }
         else
         {
-            N::Node* prev = NULL;
+            Node* prev = NULL;
             while(del_ptr->data!=key)
             {
                 prev = del_ptr;
