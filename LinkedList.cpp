@@ -1,151 +1,128 @@
-#include<iostream>
-using namespace std;
+#include <bits/stdc++.h>  //include all libraries
+#include "Node.cpp"
+using namespace N;
 
-
-class Node
-{
-public:
-    int data;
-    Node* next;
-};
 class LinkedList
 {
+private:
+    N::Node* head;
 public:
-    Node* head;
 
-
-
-
-LinkedList():head(NULL)
-{
-    //ctor
-}
-
-
-~LinkedList()
-{
-}
-
-
-bool IsEmpty()
-{
-return(head == NULL);
-}
-
-
-void InsertFirst(int new_value)
+    LinkedList():head(NULL)
     {
-        Node* new_node = new Node();
-        new_node->data = new_value;
-        if(IsEmpty())
-        {
-            new_node->next = NULL;
-            head = new_node;
-            return;
-        }
-        new_node->next = head;
-        head = new_node;
+        //ctor
+    }
+
+    ~LinkedList()
+    {
 
     }
 
-
-void Display()
+    bool IsEmpty()
     {
-        Node* temp = head;
-        while(temp!=NULL)
-        {
-            cout<<temp->data<<"\t";
-            temp = temp->next;
-        }
-        cout<<endl;
+        return(head == NULL);
     }
 
-
-int Count()
-    {
-        int counter;
-        Node* temp = head;
-        while(temp!=NULL)
+    void InsertFirst(int new_value)
         {
-            counter ++;
-            temp = temp->next;
+            N::Node* newNode = new N::Node();
+            newNode->data = new_value;
+            if(IsEmpty())
+            {
+                newNode->next = NULL;
+                head = newNode;
+                return;
+            }
+            newNode->next = head;
+            head = newNode;
         }
-        return counter;
-    }
 
-
-bool IsFound(int key)
-    {
-        bool found = false;
-        Node* temp = head;
-        while(temp != NULL)
+    void Display()
         {
-            if(temp->data == key)
-                found = true;
-            temp = temp->next;
+            N::Node* temp = head;
+            while(temp!=NULL)
+            {
+                std::cout<<temp->data<<"\t";
+                temp = temp->next;
+            }
+            std::cout<<std::endl;
         }
-        return found;
-    }
 
-
-void InsertBefore(int item ,int new_value)
-    {
-        if(IsEmpty())
-            InsertFirst(new_value);
-        else if(IsFound(item))
+    int Count()
         {
-            Node* new_node = new Node();
-            new_node->data=new_value;
-            Node* temp = head;
+            int counter = 0;
+            N::Node* temp = head;
+            while(temp!=NULL)
+            {
+                counter ++;
+                temp = temp->next;
+            }
+            return counter;
+        }
+
+    bool IsFound(int key)
+        {
+            bool found = false;
+            N::Node* temp = head;
+            while(temp != NULL)
+            {
+                if(temp->data == key)
+                    found = true;
+                temp = temp->next;
+            }
+            return found;
+        }
+
+    void InsertBefore(int item ,int new_value)
+        {
+            if(IsEmpty())
+                InsertFirst(new_value);
+            else if(!IsFound(item))
+                return;
+            N::Node* newNode = new N::Node();
+            newNode->data=new_value;
+            N::Node* temp = head;
             while(temp!=NULL && temp->next->data!=item)
             {
                 temp = temp->next;
             }
-            new_node->next = temp->next;
-            temp->next=new_node;
+            newNode->next = temp->next;
+            temp->next=newNode;
         }
-        else
-            cout<<"item is not found in list\n";
 
-    }
-
-
-void Append(int new_value)
-    {
-        if(IsEmpty())
-            InsertFirst(new_value);
-        else
+    void Append(int new_value)
         {
-            Node* temp = head;
+            if(IsEmpty())
+            {
+                InsertFirst(new_value);
+                return;
+            }
+            N::Node* temp = head;
             while(temp->next != NULL)
             {
-                temp = temp->next;
+                    temp = temp->next;
             }
-            Node* new_node = new Node();
-            new_node->data = new_value;
-            temp->next=new_node;
-            new_node->next=NULL;
+            N::Node* newNode = new N::Node();
+            newNode->data = new_value;
+            temp->next=newNode;
+            newNode->next=NULL;
         }
 
-    }
-
-
-void Delete(int key)
-{
-    if(IsEmpty())
-        cout<<"list is empty , no items to delete\n";
-    else if(IsFound(key))
+    void Delete(int key)
     {
+        if(IsEmpty())
+            return;
+        else if(!IsFound(key))
+            return;
+        N::Node* del_ptr = head;
         if(head->data == key)
         {
-            Node* del_ptr = head;
             head = head->next;
             delete del_ptr;
         }
         else
         {
-            Node* prev = NULL;
-            Node* del_ptr = head;
+            N::Node* prev = NULL;
             while(del_ptr->data!=key)
             {
                 prev = del_ptr;
@@ -154,9 +131,5 @@ void Delete(int key)
             prev->next = del_ptr->next;
             delete del_ptr;
         }
-        cout<<"node deleted succesffuly...\n";
-    }else
-        cout<<"item you enter not found in list ...\n";
-
-}
+    }
 };

@@ -13,11 +13,11 @@ public:
     int capacity;
 
 
-Vector(int vector_size)
+Vector(int vectorSize)
 {
-    VectorSize = vector_size;
+    VectorSize = vectorSize;
     capacity = 0;
-    items = new int[vector_size];
+    items = new int[vectorSize];
 }
 
 
@@ -28,7 +28,7 @@ Vector(int vector_size)
 }
 
 
-void Fill( int num_of_item )
+void Fill( int num_of_item , int takeValue[])
 {
     if(num_of_item > VectorSize && num_of_item > VectorSize - capacity)
     {
@@ -36,8 +36,7 @@ void Fill( int num_of_item )
     }
     for( int i = 0 ; i < num_of_item ; i++ )
     {
-        cout<<"enter item number "<<i+1<<endl;
-        cin>>items[i];
+        items[i] = takeValue[i];
         capacity++;
     }
 }

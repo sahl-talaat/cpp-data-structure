@@ -1,25 +1,20 @@
-#include<iostream>
-using namespace std;
+#include <bits/stdc++.h>  //include all libraries
+#include "Node.cpp"
+using namespace N;
 
 
 
-class Node_q // stuct , shared between queue , linkedList & stack
-{
-public:
-    int data;
-    Node_q* next;
-};
+
 class Queue
 {
+private:
+    N::Node* front;
+    N::Node* rear;
 public:
-    Node_q* _front;
-    Node_q* _rear;
-
-
-
+    
 Queue()
 {
-    _front=_rear=NULL;
+    front = rear = NULL;
 }
 
 
@@ -30,26 +25,26 @@ Queue()
 
 bool IsEmpty()
 {
-    return(_front==NULL);
+    return(front==NULL);
 }
 
 
 int GetFront()
 {
-    return _front->data;
+    return front->data;
 }
 
 
 int GetRear()
 {
-    return _rear->data;
+    return rear->data;
 }
 
 
 int Count()
 {
-    int counter;
-    Node_q* temp = _front;
+    int counter = 0;
+    N::Node* temp = front;
     while(temp!=NULL)
     {
         counter++;
@@ -61,45 +56,41 @@ int Count()
 
 void EnQueue(int item)
 {
-    Node_q* new_node = new Node_q;
-    new_node->data= item;
+    N::Node* newNode = new N::Node;
+    newNode->data= item;
     if(IsEmpty())
     {
-        _front=_rear=new_node;
+        front=rear=newNode;
         return;
     }
-    _rear->next=new_node;
-    _rear = new_node;
+    rear->next=newNode;
+    rear = newNode;
 }
 
 
 int DeQueue()
 {
     int value_deleted = -1;
-    if(IsEmpty())
-        cout <<"queue is empty \n";
-    else if(_front==_rear)
+    if(front==rear)
     {
-        delete _front;
-        _front=_rear=NULL;
+        delete front;
+        front=rear=NULL;
+        return front->data;
     }
-    else
-    {
-        Node_q* del_ptr = _front;
-        _front = _front->next;
-        value_deleted = del_ptr->data;
-        delete del_ptr;
-    }
+    N::Node* del_ptr = front;
+    front = front->next;
+    value_deleted = del_ptr->data;
+    delete del_ptr;
     return value_deleted;
 }
 
 
 void Display()
 {
-    Node_q* temp = _front;
+    N::Node* temp = front;
     while(temp!=NULL)
     {
-        cout<<temp->data<<"\t";
+        std::cout<<temp->data<<"\t";
         temp = temp->next;
     }
 }
@@ -108,7 +99,7 @@ void Display()
 bool IsFound(int key)
 {
     bool found = false;
-    Node_q* temp = _front;
+    N::Node* temp = front;
     while(temp!=NULL)
     {
         if(temp->data==key)

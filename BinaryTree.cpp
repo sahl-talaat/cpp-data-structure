@@ -2,6 +2,10 @@
 
 using namespace std;
 
+struct NodeBST
+{
+    /* data */
+};
 
 class Node_B // struct
 {
@@ -140,7 +144,8 @@ Node_B* FindMax(Node_B* r)
         return NULL;
     else if (r->right == NULL)
         return r;
-    return FindMax(r->right);
+    else
+        return FindMax(r->right);
 }
 
 

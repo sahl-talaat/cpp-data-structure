@@ -1,41 +1,34 @@
-#include<iostream>
-using namespace std;
+#include <bits/stdc++.h>  //include all libraries
+#include "Node.cpp"
+using namespace N;
 
 
-class Node_s
-{
-public:
-    int data;
-    Node_s* next;
-};
+
+
 class Stack
 {
+private:
+    N::Node* top;
 public:
-    Node_s* top;
 
 Stack()
 {
     top = NULL;
 }
 
-
 ~Stack()
 {
-
-
 }
-
 
 bool IsEmpty()
 {
     return(top==NULL);
 }
 
-
 bool IsFull()
 {
     bool full = false;
-    Node_s* ptr = new Node_s();
+    N::Node* ptr = new N::Node();
     if(ptr == NULL)
         full = true;
     return full;
@@ -45,25 +38,23 @@ bool IsFull()
 void Push(int item)
 {
 
-    Node_s* new_node = new Node_s();
-    new_node->data = item;
+    N::Node* newNode = new N::Node();
+    newNode->data = item;
     if(IsEmpty())
     {
-        new_node->next = NULL;
-        top = new_node;
+        newNode->next = NULL;
+        top = newNode;
         return;
     }
-    new_node->next = top;
-    top = new_node;
+    newNode->next = top;
+    top = newNode;
 }
 
 
 int Pop()
 {
-    if(IsEmpty())
-        return -1;
-    int value_deleted;
-    Node_s* del_ptr = top;
+    int value_deleted = 0;
+    N::Node* del_ptr = top;
     value_deleted = top->data;
     top = top->next;
     delete del_ptr;
@@ -73,38 +64,41 @@ int Pop()
 
 void Display()
 {
-    Node_s* temp = top;
+    N::Node* temp = top;
     while(temp!=NULL)
     {
-        cout<<temp->data<<"\t";
+        std::cout<<temp->data<<"\t";
         temp = temp->next;
     }
-        cout<<endl;
+    std::cout<<std::endl;
+    delete temp;
 }
 
 
 int StackCount()
 {
     int counter = 0;
-    Node_s* temp = top;
+    N::Node* temp = top;
     while(temp != NULL)
     {
         counter++;
         temp = temp->next;
     }
+    delete temp;
     return counter;
 }
 
 bool IsFound(int key)
 {
     bool found = false;
-    Node_s* temp = top;
+    N::Node* temp = top;
     while(temp != NULL)
     {
         if(temp->data==key)
             found = true;
         temp = temp->next;
     }
+    delete temp;
     return found;
 }
 };
