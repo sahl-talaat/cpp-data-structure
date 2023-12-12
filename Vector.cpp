@@ -39,50 +39,50 @@ void Fill( int num_of_item , int takeValue[])
         items[i] = takeValue[i];
         capacity++;
     }
-}
+} // O(n)
 
 
 void Display()
 {
-for(int i=0 ; i<capacity ; i++)
+for(int i=0 ; i<capacity ; i++) // capacity = n
     cout<<items[i]<<"\t";
-}
+} // O(n)
 
 
 int GetSize()
 {
     return VectorSize;
-}
+} // O(1)
 
 
 int Getcapacity()
 {
     return capacity;
-}
+} // O(1)
 
 
-int Search(int key)
+int Search(int key) // 1
 {
-    int index = -1;
-    for(int i=0 ; i<capacity ; i++)
+    int index = -1; // 1
+    for(int i=0 ; i<capacity ; i++)  // capacity = n
     {
-        if(items[i]==key)
+        if(items[i]==key) // n
         {
-            index = i;
+            index = i; // n
             break;
         }
     }
-    return index;
-}
+    return index; // 1
+}  // f(n)= 3n + 3 // O(n)
 
 
-void Append(int new_item)
+void Append(int new_item) //1
 {
-    if (capacity == VectorSize)
+    if (capacity == VectorSize) //1
         return;
     items[capacity] = new_item;
     capacity++;
-}
+} // O(1)
 
 
 void Insert(int index, int new_item)
@@ -93,7 +93,7 @@ void Insert(int index, int new_item)
         items[i] = items[i-1];
     items[index] = new_item;
     capacity++;
-}
+} // O(n)
 
 
 void Delete(int index)
@@ -103,7 +103,7 @@ void Delete(int index)
     for(int i=index ; i<capacity-1 ; i++)
         items[i] = items[i+1];
     capacity--;
-}
+} // O(n)
 
 
 void EnLarge(int new_size)
@@ -116,7 +116,7 @@ void EnLarge(int new_size)
     for(int i=0 ; i<capacity ; i++)
         items[i] = old[i];
     delete[]old;
-}
+} // O(n)
 
 
 void Merge(Vector other)
@@ -138,5 +138,5 @@ void Merge(Vector other)
         capacity++;
     }
 
-}
+} // O(n)
 };

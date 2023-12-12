@@ -37,7 +37,7 @@ bool IsFull()
     if(ptr == NULL)
         full = true;
     return full;
-}
+}  // O(1)
 
 
 void Push(int item)
@@ -53,7 +53,7 @@ void Push(int item)
     }
     newNode->next = top;
     top = newNode;
-}
+} // O(1)
 
 
 int Pop()
@@ -64,7 +64,7 @@ int Pop()
     top = top->next;
     delete del_ptr;
     return value_deleted;
-}
+} // O(1)
 
 
 void Display()
@@ -77,7 +77,7 @@ void Display()
     }
     std::cout<<std::endl;
     delete temp;
-}
+} // O(n)
 
 
 int StackCount()
@@ -91,7 +91,7 @@ int StackCount()
     }
     delete temp;
     return counter;
-}
+} // O(n)
 
 bool IsFound(int key)
 {
@@ -105,5 +105,5 @@ bool IsFound(int key)
     }
     delete temp;
     return found;
-}
+} // O(n)
 };

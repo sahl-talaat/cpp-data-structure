@@ -22,19 +22,19 @@ public:
         return(head == NULL);
     }
 
-    void InsertFirst(int new_value)
+    void InsertFirst(int new_value) // 1
         {
-            Node* newNode = new Node();
-            newNode->data = new_value;
-            if(IsEmpty())
+            Node* newNode = new Node(); // 1
+            newNode->data = new_value; // 1
+            if(IsEmpty()) // 1
             {
-                newNode->next = NULL;
-                head = newNode;
-                return;
+                newNode->next = NULL; // 1
+                head = newNode; // 1
+                return; // 1
             }
             newNode->next = head;
             head = newNode;
-        }
+        } // O(1)
 
     void Display()
         {

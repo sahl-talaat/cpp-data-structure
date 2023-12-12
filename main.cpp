@@ -375,10 +375,10 @@ int main()
                 int QueueOperation;
                 std::cout << "\t Hello this is Queue ADT demon!" << endl;
                 std::cout<< "\t Create Queue \n";
-                int num_item;
+                int numOfItem;
                 std::cout << "\t enter number of node to enterd\n";
-                std::cin >>num_item;
-                for(int i = 0; i<num_item ; i++)
+                std::cin >>numOfItem;
+                for(int i = 0; i<numOfItem ; i++)
                 {
                     int new_value;
                     std::cout<<"enter item number "<<i+1<<" to EN_Queue \n";
@@ -479,15 +479,15 @@ int main()
                 int BSTOperation;
                 std::cout << "\t Hello this is Binary Tree!" << endl;
                 std::cout<< "\t Create Tree \n";
-                int num_item;
+                int numOfItem;
                 std::cout << "\t enter number of node to enterd\n";
-                std::cin >>num_item;
-                for(int i = 0; i<num_item ; i++)
+                std::cin >>numOfItem;
+                for(int i = 0; i<numOfItem ; i++)
                 {
                     int new_value;
                     std::cout<<"enter item number "<<i+1<<" to insert \n";
                     std::cin>>new_value;
-                    BST.Insert(BST.root,new_value);
+                    BST.Insert(new_value);
                 }
                 
                 while (BSTalive)
@@ -579,7 +579,7 @@ int main()
                         int new_value;
                         std::cout<<"  enter new value to insert\n";
                         std::cin>>new_value;
-                        BST.Insert(BST.root,new_value);
+                        BST.Insert(new_value);
                         std::cout<<"  value inserted successfully\n";
                         break;
                     }

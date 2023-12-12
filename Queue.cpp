@@ -18,7 +18,7 @@ public:
 Queue()
 {
     front = rear = NULL;
-}
+} // O(1)
 
 
 ~Queue()
@@ -29,19 +29,19 @@ Queue()
 bool IsEmpty()
 {
     return(front==NULL);
-}
+} // O(1)
 
 
 int GetFront()
 {
     return front->data;
-}
+} // O(1)
 
 
 int GetRear()
 {
     return rear->data;
-}
+} // O(1)
 
 
 int Count()
@@ -54,7 +54,7 @@ int Count()
         temp = temp->next;
     }
     return counter;
-}
+} // O(n)
 
 
 void EnQueue(int item)
@@ -68,7 +68,7 @@ void EnQueue(int item)
     }
     rear->next=newNode;
     rear = newNode;
-}
+} // O(1)
 
 
 int DeQueue()
@@ -85,7 +85,7 @@ int DeQueue()
     value_deleted = del_ptr->data;
     delete del_ptr;
     return value_deleted;
-}
+} // O(1)
 
 
 void Display()
@@ -96,7 +96,7 @@ void Display()
         std::cout<<temp->data<<"\t";
         temp = temp->next;
     }
-}
+} // O(n)
 
 
 bool IsFound(int key)
@@ -110,7 +110,7 @@ bool IsFound(int key)
         temp = temp->next;
     }
     return found;
-}
+} // O(n)
 
 
 void Clear()
@@ -119,7 +119,7 @@ void Clear()
     {
         DeQueue();
     }
-}
+}  // O(n)
 
 };
 

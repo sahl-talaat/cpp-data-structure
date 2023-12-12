@@ -14,13 +14,19 @@ public:
         data = value;
         left=right=NULL;
     }
+    /* Node_B()
+    {
+        data = 0;
+        left=right=NULL;
+    } */
 };
 
 
 class BinaryTree
-{
-public:
-    Node_B* root; // pivate
+{private:
+    
+public: 
+    Node_B* root;// pivate
 
 
 
@@ -44,72 +50,72 @@ bool IsEmpty()
 }
 
 
-Node_B* Insert(Node_B* r,int item)
+Node_B* InsertCycle(Node_B* ptrRoor,int item)
 {
-    //new_node->data=value;
-    if(r == NULL)
+    if(ptrRoor == NULL)
     {
-        Node_B* new_node = new Node_B(item);
-        r = new_node;
+        Node_B* newNode = new Node_B(item);
+        //newNode->data = item;
+        ptrRoor = newNode;
     }
-    else if(item < r->data)
+    else if(item < ptrRoor->data)
     {
-        r->left = Insert(r->left,item);
+        ptrRoor->left = InsertCycle(ptrRoor->left,item);
     }
     else
     {
-        r->right = Insert(r->right,item);
+        ptrRoor->right = InsertCycle(ptrRoor->right,item);
     }
-    return r;
+    return ptrRoor;
 }
-
 
 void Insert(int item)
 {
-    root = Insert(root,item);
+    root = InsertCycle(root, item);
 }
 
 
-void PreOrder(Node_B* r)//root-left-right
+
+void PreOrder(Node_B* ptrRoor)//root-left-right
+{ // 1
+    if(ptrRoor==NULL) // 1
+        return; // 1
+    cout<<ptrRoor->data<<"\t";
+    PreOrder(ptrRoor->left); // f()
+    PreOrder(ptrRoor->right);
+}
+
+
+void InOrder(Node_B* ptrRoor)//left-root-right
 {
-    if(r==NULL)
+    if(ptrRoor==NULL)
         return;
-    cout<<r->data<<"\t";
-    PreOrder(r->left);
-    PreOrder(r->right);
+    InOrder(ptrRoor->left);
+    cout<<ptrRoor->data<<"\t";
+    InOrder(ptrRoor->right);
 }
 
 
-void InOrder(Node_B* r)//left-root-right
+void PostOrder(Node_B* ptrRoor)//left-right-root
 {
-    if(r==NULL)
+    if(ptrRoor==NULL)
         return;
-    InOrder(r->left);
-    cout<<r->data<<"\t";
-    InOrder(r->right);
+    PostOrder(ptrRoor->left);
+    PostOrder(ptrRoor->right);
+    cout<<ptrRoor->data<<"\t";
 }
 
 
-void PostOrder(Node_B* r)//left-right-root
+Node_B* Search(Node_B* ptrRoor,int key)
 {
-    if(r==NULL)
-        return;
-    PostOrder(r->left);
-    PostOrder(r->right);
-    cout<<r->data<<"\t";
-}
-
-
-Node_B* Search(Node_B* r,int key)
-{
-    if(r == NULL)
+    if(ptrRoor == NULL)
         return NULL;
-    else if(r->data == key)
-        return r;
-    else if(key < r->data)
-        return  Search(r->left , key);
+    else if(ptrRoor->data == key)
+        return ptrRoor;
+    else if(key < ptrRoor->data)
+        return  Search(ptrRoor->left , key);
     else
-        return Search(r->right , key);
+        return Search(ptrRoor->right , key);
 }
 
 
@@ -123,60 +129,60 @@ bool Search(int key)
 }
 
 
-Node_B* FindMin(Node_B* r)
+Node_B* FindMin(Node_B* ptrRoor)
 {
-    if(r == NULL)
+    if(ptrRoor == NULL)
         return NULL;
-    else if (r->left == NULL)
-        return r;
+    else if (ptrRoor->left == NULL)
+        return ptrRoor;
     else
-        FindMin(r->left);
+        FindMin(ptrRoor->left);
 }
 
 
-Node_B* FindMax(Node_B* r)
+Node_B* FindMax(Node_B* ptrRoor)
 {
-    if(r == NULL)
+    if(ptrRoor == NULL)
         return NULL;
-    else if (r->right == NULL)
-        return r;
+    else if (ptrRoor->right == NULL)
+        return ptrRoor;
     else
-        FindMax(r->right);
+        FindMax(ptrRoor->right);
 }
 
 
-Node_B* Delete(Node_B* r, int key)
+Node_B* Delete(Node_B* ptrRoor, int key)
 {
-    if(r == NULL) // empty tree
+    if(ptrRoor == NULL) // empty tree
         return NULL;
-    else if(key < r->data) // item exist in left sub tree
-        r->left = Delete(r->left,key);
-    else if(key > r->data) // item exist in right sub tree
-        r->right = Delete(r->right,key);
+    else if(key < ptrRoor->data) // item exist in left sub tree
+        ptrRoor->left = Delete(ptrRoor->left,key);
+    else if(key > ptrRoor->data) // item exist in right sub tree
+        ptrRoor->right = Delete(ptrRoor->right,key);
     else
     {
-        if(r->left == NULL && r->right == NULL) // leaf node
-            r = NULL;
-        else if(r->left!=NULL && r->right==NULL) // one child in left
+        if(ptrRoor->left == NULL && ptrRoor->right == NULL) // leaf node
+            ptrRoor = NULL;
+        else if(ptrRoor->left!=NULL && ptrRoor->right==NULL) // one child in left
         {
-            r->data = r->left->data;
-            delete r->left;
-            r->left = NULL;
+            ptrRoor->data = ptrRoor->left->data;
+            delete ptrRoor->left;
+            ptrRoor->left = NULL;
         }
-        else if(r->right!=NULL && r->left==NULL) // one child in right
+        else if(ptrRoor->right!=NULL && ptrRoor->left==NULL) // one child in right
         {
-            r->data = r->right->data;
-            delete r->right;
-            r->right = NULL;
+            ptrRoor->data = ptrRoor->right->data;
+            delete ptrRoor->right;
+            ptrRoor->right = NULL;
         }
         else // have two child " replace it with max left
         {
-            Node_B* _max = FindMax(r->left);
-            r->data = _max->data;
-            r->left = Delete(r->left,_max->data);
+            Node_B* _max = FindMax(ptrRoor->left);
+            ptrRoor->data = _max->data;
+            ptrRoor->left = Delete(ptrRoor->left,_max->data);
         }
     }
-    return r;
+    return ptrRoor;
 
 }
 
