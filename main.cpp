@@ -1,5 +1,5 @@
 
-#include <iostream>
+#include <bits/stdc++.h> 
 using namespace std;
 //#include "Node.cpp"
 #include "Vector.cpp"
@@ -7,6 +7,11 @@ using namespace std;
 #include "Stack.cpp"
 #include "Queue.cpp"
 #include "BinaryTree.cpp"
+
+
+
+//using namespace vetor; 
+
 
 
 
@@ -71,7 +76,7 @@ int main()
                 {
                     std::cout<<"\t\t Operations of Vector \n";
 
-                    std::cout<<"\t\t 1 : Get size and length of Vector \n";
+                    std::cout<<"\t\t 1 : Get size and capacity of Vector \n";
                     std::cout<<"\t\t 2 : Display items of Vector \n";
                     std::cout<<"\t\t 3 : Search for item inside Vector \n";
                     std::cout<<"\t\t 4 : Append new item inside Vector \n";
@@ -92,8 +97,8 @@ int main()
                         }
                         case 1 : // size & length
                         {
-                            std::cout<<" Vector size = "<<vector.GetSize()<<endl;
-                            std::cout<<" Vector length = "<<vector.Getcapacity()<<endl;
+                            std::cout<<" Vector size   = "<<vector.GetSize()<<endl;
+                            std::cout<<" Vector capacity = "<<vector.Getcapacity()<<endl;
                             break;
                         }
                         case 2: // display

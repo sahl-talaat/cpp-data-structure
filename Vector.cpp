@@ -1,8 +1,7 @@
 
-#include<iostream>
-using namespace std;
-//namespace sahl
-//{
+#include <bits/stdc++.h>  //include all libraries
+
+//namespace vector{
 
 
 class Vector
@@ -24,7 +23,7 @@ Vector(int vectorSize)
 ~Vector()
 {
     //delete[]items;
-    cout<<"\t\t\t Vector Deleted\n";
+    std::cout<<"\t\t\t Vector Deleted\n";
 }
 
 
@@ -45,7 +44,7 @@ void Fill( int num_of_item , int takeValue[])
 void Display()
 {
 for(int i=0 ; i<capacity ; i++) // capacity = n
-    cout<<items[i]<<"\t";
+    std::cout<<items[i]<<"\t";
 } // O(n)
 
 
@@ -140,3 +139,4 @@ void Merge(Vector other)
 
 } // O(n)
 };
+//}

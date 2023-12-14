@@ -1,6 +1,5 @@
-#include <iostream>
 
-using namespace std;
+
 
 
 class Node_B // struct
@@ -136,7 +135,7 @@ Node_B* FindMin(Node_B* ptrRoor)
     else if (ptrRoor->left == NULL)
         return ptrRoor;
     else
-        FindMin(ptrRoor->left);
+        return FindMax(ptrRoor->left);
 }
 
 
@@ -147,7 +146,7 @@ Node_B* FindMax(Node_B* ptrRoor)
     else if (ptrRoor->right == NULL)
         return ptrRoor;
     else
-        FindMax(ptrRoor->right);
+        return FindMax(ptrRoor->right);
 }
 
 
