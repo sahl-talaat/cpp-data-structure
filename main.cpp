@@ -1,18 +1,10 @@
 
 #include <bits/stdc++.h> 
-using namespace std;
-//#include "Node.cpp"
-#include "Vector.cpp"
-#include "LinkedList.cpp"
-#include "Stack.cpp"
-#include "Queue.cpp"
-#include "BinaryTree.cpp"
-
-
-
-//using namespace vetor; 
-
-
+#include "Vector.h"
+#include "LinkedList.h"
+#include "Stack.h"
+#include "Queue.h"
+#include "BinaryTree.h"
 
 
 int main()
@@ -40,6 +32,7 @@ int main()
             ProgramRuning = false;
             break;
         }
+        
         else if (OutChose == 1)
             VectorAlive = true;
         else if (OutChose == 2)
@@ -62,14 +55,23 @@ int main()
                 int vector_size;
                 std::cout << "\t enter size of Vector \n";
                 std::cin >>vector_size;
-                Vector vector(vector_size);
+                sahl::Vector vector(vector_size);
                 std::cout<<"how many items you want to fill ? \n";
                 std::cin>>num_of_item;
                 int takeValue[num_of_item];
+                while(num_of_item > vector_size)
+                {
+                    std::cout<<" Vector Size = "<<vector_size<<std::endl;
+                    std::cout<<" Number Of Items U Fill Must Be Less Than VSize\n";
+                    std::cout<<" Enter Num Of Items To Fill :";
+                    std::cin>>num_of_item;
+                    if(num_of_item < vector_size)
+                        break;
+                }
                 for( int i = 0 ; i < num_of_item ; i++ )
                 {
-                    cout<<"enter item number "<<i+1<<endl;
-                    cin>>takeValue[i];
+                    std::cout<<"enter item number "<<i+1<<std::endl;
+                    std::cin>>takeValue[i];
                 }
                 vector.Fill(num_of_item,takeValue);
                 while (VectorAlive)
@@ -97,8 +99,8 @@ int main()
                         }
                         case 1 : // size & length
                         {
-                            std::cout<<" Vector size   = "<<vector.GetSize()<<endl;
-                            std::cout<<" Vector capacity = "<<vector.Getcapacity()<<endl;
+                            std::cout<<" Vector size   = "<<vector.GetSize()<<std::endl;
+                            std::cout<<" Vector capacity = "<<vector.Getcapacity()<<std::endl;
                             break;
                         }
                         case 2: // display
@@ -116,7 +118,7 @@ int main()
                             if(index == -1)
                                 std::cout<<"item not found \n";
                             else
-                                std::cout<<" item found @ postion "<<index<<endl;
+                                std::cout<<" item found @ postion "<<index<<std::endl;
                             break;
                         }
                         case 4: // append
@@ -157,14 +159,14 @@ int main()
                             int new_arr_size;
                             std::cout<< "enter size of new Vector \n";
                             std::cin>>new_arr_size;
-                            Vector other(new_arr_size);
+                            sahl::Vector other(new_arr_size);
                             std::cout<<"how many items you want to fill ? \n";
                             std::cin>>num_of_item;
                             int takeValue[num_of_item];
                             for( int i = 0 ; i < num_of_item ; i++ )
                             {
-                                cout<<"enter item number "<<i+1<<endl;
-                                cin>>takeValue[i];
+                                std::cout<<"enter item number "<<i+1<<std::endl;
+                                std::cin>>takeValue[i];
                             }
                             other.Fill(num_of_item,takeValue);
                             vector.Merge(other);
@@ -183,9 +185,9 @@ int main()
             {
                 
                 ///////////////// Linked List ADT demon //////////////////
-                LinkedList List;
+                sahl::LinkedList List;
                 int LinkedListOperation;
-                std::cout << "\t Hello this is linkedlist ADT demon!" << endl;
+                std::cout << "\t Hello this is linkedlist ADT demon!" << std::endl;
                 std::cout<< "\t Create Linked List \n";
                 int num_node;
                 std::cout << "\t enter number of Node \n";
@@ -220,7 +222,7 @@ int main()
                         }
                     case 1 : // get count
                         {
-                            std::cout<<"number of node = "<<List.Count()<<endl;
+                            std::cout<<"number of node = "<<List.Count()<<std::endl;
                             break;
                         }
                     case 2: // display
@@ -277,9 +279,9 @@ int main()
             case 3: // STACK
             {
                  ///////////////// Stack ADT demon //////////////////
-                Stack Stck;
+                sahl::Stack Stck;
                 int StackOperation;
-                std::cout << "\t Hello this is stack ADT demon!" << endl;
+                std::cout << "\t Hello this is stack ADT demon!" << std::endl;
                 std::cout<< "\t Create Stack \n";
                 int num_node;
                 std::cout << "\t enter number of node to enterd\n";
@@ -376,9 +378,9 @@ int main()
             case 4: // QUEUE
             {
                  ///////////////// QUEUE ADT demon //////////////////
-                Queue Que;
+                sahl::Queue Que;
                 int QueueOperation;
-                std::cout << "\t Hello this is Queue ADT demon!" << endl;
+                std::cout << "\t Hello this is Queue ADT demon!" << std::endl;
                 std::cout<< "\t Create Queue \n";
                 int numOfItem;
                 std::cout << "\t enter number of node to enterd\n";
@@ -480,9 +482,9 @@ int main()
             case 5: // BINARY TREE
             {
                  ///////////////// BINARY SEARCH TREE  //////////////////
-                BinaryTree BST;
+                sahl::BinaryTree BST;
                 int BSTOperation;
-                std::cout << "\t Hello this is Binary Tree!" << endl;
+                std::cout << "\t Hello this is Binary Tree!" << std::endl;
                 std::cout<< "\t Create Tree \n";
                 int numOfItem;
                 std::cout << "\t enter number of node to enterd\n";
@@ -535,7 +537,7 @@ int main()
                             std::cout<<"Display tree content pre-order\n";
                             BST.PreOrder(BST.root);
                         }
-                        std::cout<<endl;
+                        std::cout<<std::endl;
                         break;
                     }
                     case 3: // display  post - order
@@ -547,7 +549,7 @@ int main()
                             std::cout<<"Display tree content post-order\n";
                             BST.PostOrder(BST.root);
                         }
-                        std::cout<<endl;
+                        std::cout<<std::endl;
                         break;
                     }
                     case 4: // display  in - order
@@ -559,7 +561,7 @@ int main()
                             std::cout<<"Display tree content in-order\n";
                             BST.InOrder(BST.root);
                         }
-                        std::cout<<endl;
+                        std::cout<<std::endl;
                         break;
                     }
                     case 5: // display 3 operation
@@ -570,11 +572,11 @@ int main()
                         {
                             std::cout<<"Display tree content\n";
                             std::cout<<"......................................................\n";
-                            BST.PreOrder(BST.root);std::cout<<endl;
+                            BST.PreOrder(BST.root);std::cout<<std::endl;
                             std::cout<<"......................................................\n";
-                            BST.PostOrder(BST.root);;std::cout<<endl;
+                            BST.PostOrder(BST.root);;std::cout<<std::endl;
                             std::cout<<"......................................................\n";
-                            BST.InOrder(BST.root);std::cout<<endl;
+                            BST.InOrder(BST.root);std::cout<<std::endl;
                             std::cout<<"......................................................\n";
                         }
                         break;
@@ -602,12 +604,12 @@ int main()
                     }
                     case 8: // min value
                     {
-                        std::cout<<"\t minimum value in tree = "<<BST.FindMin(BST.root)->data<<endl;
+                        std::cout<<"\t minimum value in tree = "<<BST.FindMin(BST.root)->data<<std::endl;
                         break;
                     }
                     case 9: // max value
                     {
-                        std::cout<<"\t maximum value in tree = "<<BST.FindMax(BST.root)->data<<endl;
+                        std::cout<<"\t maximum value in tree = "<<BST.FindMax(BST.root)->data<<std::endl;
                         break;
                     }
                     case 10:
